@@ -1,0 +1,106 @@
+.BaseLayout {
+	min-height: 100vh;
+
+	.LeftSider {
+		background-color: #222222;
+		color: #999999;
+		// position: fixed;
+		// height: 100vh;
+
+		:global {
+			.ant-layout-sider-zero-width-trigger {
+				position: fixed;
+				left: 20px;
+				top: 90vh;
+				background-color: #192531;
+			}
+		}
+
+		.AvatarWrap {
+			height: 100px;
+		}
+
+		.UserNameWrap {
+			font-size: 18px;
+			color: #fff;
+		}
+
+		.DescriptionWrap {
+			font-size: 12px;
+		}
+
+		.CountWrap {
+			.LeftCol {
+				width: 50px;
+				padding-right: 10px;
+				border-right: 2px solid #333333;
+			}
+
+			.RightCol {
+				width: 50px;
+				padding-left: 10px;
+			}
+
+			.CountArea {
+				font-size: 20px;
+				font-weight: 700;
+			}
+		}
+
+		.NavWrap {
+			height: 100px;
+
+			:global {
+				.ant-menu {
+					background-color: #222222;
+				}
+
+				.ant-menu-horizontal {
+					border: none;
+				}
+			}
+		}
+
+		.LinkWrap {
+			height: 100px;
+			font-size: 12px;
+
+			.LinkStyle {
+				color: #999;
+				margin: 0 6px;
+				padding-bottom: 2px;
+				border-bottom: 0.5px solid #999;
+
+				.IconStyle {
+					margin: 0 2px 0 0;
+				}
+			}
+
+			.LinkStyle::before {
+				background: #693869;
+				border-radius: 50%;
+				content: ' ';
+				display: inline-block;
+				height: 4px;
+				margin-right: 3px;
+				vertical-align: middle;
+				width: 4px;
+			}
+		}
+	}
+
+	.MainContent {
+		background-color: #ffffff;
+		padding: 30px 50px;
+	}
+}
+
+.backToTop {
+	right: 10px;
+	font-size: 28px;
+	color: #999;
+
+	&:hover {
+		color: #222222;
+	}
+}

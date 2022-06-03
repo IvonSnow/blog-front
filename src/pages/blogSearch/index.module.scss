@@ -1,0 +1,40 @@
+.tagCloud {
+	width: 60%;
+	margin: 0 auto;
+}
+
+.search {
+	width: 70%;
+	margin-top: 60px;
+	position: relative;
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+.searchMan {
+	width: 600px;
+	margin: 0 auto;
+
+	img {
+		width: 100%;
+	}
+}
+
+.searchResult {
+	width: 80%;
+	margin: 20px auto;
+
+	:global {
+		.ant-list-item-meta {
+			margin-bottom: 0;
+		}
+
+		.ant-list-item-action{
+			position: absolute;
+			bottom: 15px;
+		}
+	}
+	.description {
+		color: #8c8c8c;
+	}
+}

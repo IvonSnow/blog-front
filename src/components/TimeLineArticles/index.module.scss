@@ -1,0 +1,44 @@
+.timeLineWrap {
+	font-size: 32px;
+
+	.lineTitle {
+		font-size: 16px;
+		color: #999;
+	}
+
+	.lineSumaryContent {
+		font-size: 24px;
+		color: #555555;
+	}
+
+	.lineContent {
+		font-size: 20px;
+		color: #555555;
+		min-height: 80px;
+
+		.content {
+			border-bottom: #999 dashed 1px;
+			cursor: pointer;
+		}
+	}
+
+	:global {
+		.ant-timeline-item {
+			.ant-timeline-item-label {
+				width: calc(18% - 12px);
+			}
+			.ant-timeline-item-tail {
+				left: 18%;
+			}
+			.ant-timeline-item-head,
+			.ant-timeline-item-head-gray {
+				left: 18%;
+			}
+
+			.ant-timeline-item-content {
+				left: calc(18% - 4px) !important;
+				width: calc(60% - 14px) !important;
+			}
+		}
+	}
+}

@@ -1,0 +1,39 @@
+.articleWraper {
+	width: 800px;
+	margin: 0 auto;
+	.coverWraper {
+		width: 60%;
+		margin: 0 auto;
+
+		img {
+			width: 100%;
+		}
+	}
+
+	.headerWrap {
+		margin: 10px 0;
+
+		.articleTitle {
+			font-size: 24px;
+			line-height: 1.22;
+			margin: 24px 0;
+			word-wrap: break-word;
+		}
+		.like {
+			color: #8590a6;
+			font-size: 14px;
+		}
+		.time {
+			font-size: 14px;
+			margin-left: 20px;
+		}
+	}
+
+	.articleContent {
+		h1 {
+			font-size: 1.5em;
+			line-height: 1.5;
+			font-weight: 600;
+		}
+	}
+}
