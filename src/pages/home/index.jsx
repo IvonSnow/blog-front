@@ -14,7 +14,6 @@ export default function Home() {
 
 	return (
 		<>
-			<h1>Home</h1>
 			{/* 文章标签 */}
 			<div style={{ marginBottom: 40 }}>
 				<LabelArea />
@@ -28,7 +27,7 @@ export default function Home() {
 
 // 请求文章列表数据
 const queryArticlesList = async () => {
-	const { data: articles } = await axios.get('/api/blog/articles/list').catch(err => {
+	const { data: articles } = await axios.get('/front/blog/articles/list').catch(err => {
 		console.error(err)
 	})
 

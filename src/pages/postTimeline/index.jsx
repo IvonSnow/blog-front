@@ -8,19 +8,17 @@ export default function PostTimeline() {
 
 	return (
 		<div>
-			<h1>PostTimeline</h1>
 			<TimeLineArticles data={articles} />
 		</div>
 	)
 }
 
 // 请求文章列表数据
+// 请求文章列表数据
 const queryArticlesList = async () => {
-	const {
-		data: { articles: res },
-	} = await axios.get('/blog/api/list').catch(err => {
+	const { data: articles } = await axios.get('/front/blog/articles/list').catch(err => {
 		console.error(err)
 	})
 
-	return res
+	return articles
 }

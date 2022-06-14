@@ -6,6 +6,7 @@ import { TagsOutlined } from '@ant-design/icons'
 import { isArray } from 'lodash'
 import styles from './index.module.scss'
 import '@/mock/blog/labels'
+import { queryLabels } from '@/pages/blogSearch/index'
 
 export default function LabelArea() {
 	const { data: labels, error, loading } = useRequest(queryLabels)
@@ -21,17 +22,9 @@ export default function LabelArea() {
 						<Tag
 							key={index}
 							className={styles.labelTag}
-						>{`${item.label} (${item.count})`}</Tag>
+						>{`${item.name} (${item.article_count})`}</Tag>
 					))}
 			</Row>
 		</div>
 	)
-}
-
-const queryLabels = async () => {
-	let {
-		data: { data: res },
-	} = await axios.get('/blog/api/labels')
-
-	return res
 }
