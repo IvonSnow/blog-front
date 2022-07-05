@@ -60,11 +60,18 @@
 				}
 			}
 		}
+	}
+
+	.MainContent {
+		background-color: #ffffff;
+		padding: 30px 50px;
+	}
+
+	.footer {
+		font-size: 12px;
+		text-align: 'center';
 
 		.LinkWrap {
-			height: 100px;
-			font-size: 12px;
-
 			.LinkStyle {
 				color: #999;
 				margin: 0 6px;
@@ -87,11 +94,6 @@
 				width: 4px;
 			}
 		}
-	}
-
-	.MainContent {
-		background-color: #ffffff;
-		padding: 30px 50px;
 	}
 }
 

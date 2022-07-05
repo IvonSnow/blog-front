@@ -7,12 +7,11 @@ import {
 	MailOutlined,
 	ToTopOutlined,
 	MenuFoldOutlined,
-	MenuUnfoldOutlined
+	MenuUnfoldOutlined,
 } from '@ant-design/icons'
 import classnames from 'classnames'
 import { useLocation } from 'react-router-dom'
 import { NavItems } from '@/router/router'
-
 
 const { Content, Footer, Sider } = Layout
 
@@ -41,9 +40,7 @@ function BasicLayout({ children }) {
 				collapsed={collapsed}
 				collapsedWidth={0}
 				width={260}
-				trigger={
-					collapsed ? <MenuFoldOutlined /> : <MenuUnfoldOutlined />
-				}
+				trigger={collapsed ? <MenuFoldOutlined /> : <MenuUnfoldOutlined />}
 				onCollapse={handleTrigger}
 			>
 				<Space direction={'vertical'} style={{ width: '100%', height: '100%' }}>
@@ -94,13 +91,18 @@ function BasicLayout({ children }) {
 					<Row className={classnames(styles.NavWrap)} align={'middle'} justify={'center'}>
 						<Menu mode={'horizontal'} selectedKeys={[currNav]} items={NavItems}></Menu>
 					</Row>
-
-					{/* 链接 */}
+				</Space>
+			</Sider>
+			<Layout>
+				<Content className={styles.MainContent}>{children}</Content>
+				<Footer className={styles.footer}>
+					{/* 声明和链接 */}
 					<Row
 						className={classnames(styles.LinkWrap)}
 						align={'middle'}
 						justify={'center'}
 					>
+						<Col>风云雪 ©2022 Created by xueyunfeng</Col>
 						<Col>
 							<a
 								className={classnames(styles.LinkStyle)}
@@ -127,10 +129,13 @@ function BasicLayout({ children }) {
 							</a>
 						</Col>
 					</Row>
-				</Space>
-			</Sider>
-			<Layout>
-				<Content className={styles.MainContent}>{children}</Content>
+					{/* 备案 */}
+					<Row align={'middle'} justify={'center'}>
+						<a href='https://beian.miit.gov.cn' target={'_blank'} rel='noreferrer'>
+							苏ICP备2022024806号-1
+						</a>
+					</Row>
+				</Footer>
 			</Layout>
 			<BackTop className={classnames(styles.backToTop)}>
 				<ToTopOutlined />
