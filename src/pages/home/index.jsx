@@ -27,9 +27,14 @@ export default function Home() {
 
 // 请求文章列表数据
 const queryArticlesList = async () => {
-	const { data: articles } = await axios.get('/front/blog/articles/list').catch(err => {
+	const { data: res } = await axios.get('/front/blog/articles/list').catch(err => {
 		console.error(err)
 	})
+
+	let articles = []
+	if (res.success && res.data) {
+		articles = res.data
+	}
 
 	return articles
 }

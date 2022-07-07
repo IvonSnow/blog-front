@@ -5,11 +5,10 @@ import React from 'react'
 import { useParams } from 'react-router-dom'
 import styles from './index.module.scss'
 import classNames from 'classnames'
-import 'react-markdown-editor-lite/lib/index.css';
+import 'react-markdown-editor-lite/lib/index.css'
 import moment from 'moment'
 import 'moment/locale/zh-cn'
 moment.locale('zh-cn')
-
 
 // // markdow语法解析器
 // const mdParser = new MarkdownIt({
@@ -23,7 +22,6 @@ moment.locale('zh-cn')
 //     return ''; // use external default escaping
 //   },
 // });
-
 
 const ArticleDetail = () => {
 	const { id } = useParams()
@@ -49,16 +47,13 @@ const ArticleDetail = () => {
 			<div
 				className={classNames(styles.articleContent, 'custom-html-style')}
 				dangerouslySetInnerHTML={{ __html: data.content_html }}
-			>
-			</div>
-
-			
+			></div>
 		</div>
 	)
 }
 
 const queryArticleDetail = async id => {
-	const { data: res } = await axios(`/api/blog/articles/detail?id=${id}`)
+	const { data: res } = await axios(`/front/blog/articles/detail?id=${id}`)
 	if (res.success) {
 		return res.data
 	} else {
