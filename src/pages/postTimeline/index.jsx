@@ -16,9 +16,14 @@ export default function PostTimeline() {
 // 请求文章列表数据
 // 请求文章列表数据
 const queryArticlesList = async () => {
-	const { data: articles } = await axios.get('/front/blog/articles/list').catch(err => {
+	const { data: res } = await axios.get('/front/blog/articles/list').catch(err => {
 		console.error(err)
 	})
+
+	let articles = []
+	if (res.success) {
+		articles = res.data
+	}
 
 	return articles
 }
