@@ -4,7 +4,7 @@ import { useState } from 'react'
 import axios from 'axios'
 import LabelArea from './components/LabelArea'
 import WaterFall from './components/WaterFall'
-
+import styles from './index.module.scss'
 import { isArray } from 'lodash'
 // import '@/mock/user.js'
 
@@ -13,7 +13,7 @@ export default function Home() {
 	const { data: articles, error, loading } = useRequest(queryArticlesList)
 
 	return (
-		<>
+		<div className={styles.homeContainer}>
 			{/* 文章标签 */}
 			<div style={{ marginBottom: 40 }}>
 				<LabelArea />
@@ -21,7 +21,7 @@ export default function Home() {
 			{/* 推荐文章--瀑布流 */}
 			{console.log(articles)}
 			{isArray(articles) && <WaterFall data={articles} />}
-		</>
+		</div>
 	)
 }
 

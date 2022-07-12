@@ -1,17 +1,19 @@
 .labelWrap {
 	.labelHead {
-		font-size: 24px;
+		margin-top: 20px;
+		font-size: 20px;
+		vertical-align: top;
 	}
 
 	.labelBody {
 		padding: 10px 120px;
 
 		.labelTag {
-			margin: 10px 10px;
-			padding: 19px 14px;
+			margin: 8px 8px;
+			padding: 14px 14px;
 			display: inline-flex;
 			line-height: 0;
-			font-size: 1rem;
+			font-size: 0.8rem;
 			font-weight: 500;
 			border-radius: 5px;
 			cursor: pointer;

@@ -1,7 +1,7 @@
 import { useRequest } from 'ahooks'
 import axios from 'axios'
 import React from 'react'
-import { Tag, Row } from 'antd'
+import { Tag, Row, Badge } from 'antd'
 import { TagsOutlined } from '@ant-design/icons'
 import { isArray } from 'lodash'
 import styles from './index.module.scss'
@@ -19,10 +19,16 @@ export default function LabelArea() {
 			<Row className={styles.labelBody}>
 				{isArray(labels) &&
 					labels.map((item, index) => (
-						<Tag
-							key={index}
-							className={styles.labelTag}
-						>{`${item.name} (${item.article_count})`}</Tag>
+						<Badge
+							size='small'
+							count={item.article_count}
+							offset={[-10, 10]}
+							color={'cyan'}
+						>
+							<Tag key={index} className={styles.labelTag}>
+								{item.name}
+							</Tag>
+						</Badge>
 					))}
 			</Row>
 		</div>

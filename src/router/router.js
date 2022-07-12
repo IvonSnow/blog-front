@@ -1,13 +1,7 @@
 import { Link } from 'react-router-dom'
-import {
-	HomeOutlined,
-	UnorderedListOutlined,
-	InsertRowLeftOutlined,
-	SearchOutlined,
-} from '@ant-design/icons'
+import { HomeOutlined, InsertRowLeftOutlined, SearchOutlined } from '@ant-design/icons'
 
 import Home from '@/pages/home/index.jsx'
-import Categories from '@/pages/categories'
 import PostTimeline from '@/pages/postTimeline'
 import BlogSearch from '@/pages/blogSearch'
 
@@ -15,7 +9,7 @@ export const NavItems = [
 	{
 		title: '主页',
 		label: (
-			<Link to={'home'} style={{color: '#999'}}>
+			<Link to={'home'} style={{ color: '#999' }}>
 				<HomeOutlined />
 			</Link>
 		),
@@ -35,7 +29,7 @@ export const NavItems = [
 	{
 		title: '时间线',
 		label: (
-			<Link to={'timeline'} style={{color: '#999'}}>
+			<Link to={'timeline'} style={{ color: '#999' }}>
 				<InsertRowLeftOutlined />
 			</Link>
 		),
@@ -45,7 +39,7 @@ export const NavItems = [
 	{
 		title: '搜索',
 		label: (
-			<Link to={'search'} style={{color: '#999'}}>
+			<Link to={'search'} style={{ color: '#999' }}>
 				<SearchOutlined />
 			</Link>
 		),

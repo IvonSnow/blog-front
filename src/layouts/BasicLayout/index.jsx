@@ -1,17 +1,20 @@
 import React, { useEffect, useState } from 'react'
 import styles from './index.module.scss'
-import { Layout, Avatar, Space, Row, Col, Menu, BackTop } from 'antd'
+import { Layout, Avatar, Space, Row, Col, BackTop, Image } from 'antd'
 import {
-	UserOutlined,
 	GithubOutlined,
 	MailOutlined,
 	ToTopOutlined,
 	MenuFoldOutlined,
 	MenuUnfoldOutlined,
+	LoadingOutlined,
 } from '@ant-design/icons'
 import classnames from 'classnames'
 import { useLocation } from 'react-router-dom'
+import Menu from '@/components/Menu'
 import { NavItems } from '@/router/router'
+import { useRequest } from 'ahooks'
+import axios from 'axios'
 
 const { Content, Footer, Sider } = Layout
 
@@ -22,6 +25,9 @@ function BasicLayout({ children }) {
 	const location = useLocation()
 	// 当前目录
 	const [currNav, setCurNav] = useState('')
+	// 总文章数和标签数
+	const { data: totalPosts } = useRequest(getTotalPosts)
+	const { data: totalLabels } = useRequest(getTotalLabels)
 
 	// 解析路径，设置当前目录
 	useEffect(() => {
@@ -50,7 +56,12 @@ function BasicLayout({ children }) {
 						align={'middle'}
 						justify={'center'}
 					>
-						<Avatar shape='square' size={72} icon={<UserOutlined />} />
+						<Avatar
+							shape='square'
+							size={72}
+							style={{ borderRadius: 6 }}
+							icon={<Image src='./avator.jpg' />}
+						/>
 					</Row>
 
 					{/* 用户名 */}
@@ -78,18 +89,22 @@ function BasicLayout({ children }) {
 						justify={'center'}
 					>
 						<Col className={classnames(styles.LeftCol)}>
-							<Row className={classnames(styles.CountArea)}>{'201'}</Row>
+							<Row className={classnames(styles.CountArea)}>
+								{totalPosts ? totalPosts : <LoadingOutlined />}
+							</Row>
 							<Row>{'posts'}</Row>
 						</Col>
 						<Col className={classnames(styles.RightCol)}>
-							<Row className={classnames(styles.CountArea)}>{'16'}</Row>
-							<Row>{'categories'}</Row>
+							<Row className={classnames(styles.CountArea)}>
+								{totalLabels ? totalLabels : <LoadingOutlined />}
+							</Row>
+							<Row>{'labels'}</Row>
 						</Col>
 					</Row>
 
 					{/* 导航 */}
 					<Row className={classnames(styles.NavWrap)} align={'middle'} justify={'center'}>
-						<Menu mode={'horizontal'} selectedKeys={[currNav]} items={NavItems}></Menu>
+						<Menu selectedKey={currNav} items={NavItems}></Menu>
 					</Row>
 				</Space>
 			</Sider>
@@ -142,6 +157,26 @@ function BasicLayout({ children }) {
 			</BackTop>
 		</Layout>
 	)
+}
+
+const getTotalLabels = async () => {
+	let { data: res } = await axios.get('/front/blog/articleLabels/total')
+
+	if (res.success) {
+		return res.data
+	}
+
+	return 0
+}
+
+const getTotalPosts = async () => {
+	let { data: res } = await axios.get('/front/blog/articles/total')
+
+	if (res.success) {
+		return res.data
+	}
+
+	return 0
 }
 
 export default BasicLayout
