@@ -2,6 +2,7 @@ import BasicLayout from './layouts/BasicLayout'
 import { Routes, Route, Navigate } from 'react-router-dom'
 import { NavItems } from './router/router'
 import ArticleDetail from '@/pages/article'
+import React, { useState } from 'react'
 
 function App() {
 	return (

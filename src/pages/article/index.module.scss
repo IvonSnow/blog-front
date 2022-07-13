@@ -36,4 +36,36 @@
 			font-weight: 600;
 		}
 	}
+
+	.articleNav {
+		position: fixed;
+		top: 100px;
+		right: 0px;
+		background-color: #e7eaed;
+		border-radius: 6px;
+		box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.1);
+	}
+
+	.showNav {
+		transform: translateX(-20px);
+		transition: 0.2s ease-out;
+	}
+
+	.hideNav {
+		transform: translateX(150%);
+		transition: 0.5s ease-out;
+	}
+
+	.hideBtn {
+		position: fixed;
+		top: 65px;
+		right: 20px;
+		width: 30px;
+		height: 30px;
+		border-radius: 15px;
+		background-color: #e7eaed;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
 }

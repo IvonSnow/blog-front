@@ -16,6 +16,9 @@ import { NavItems } from '@/router/router'
 import { useRequest } from 'ahooks'
 import axios from 'axios'
 
+import MarkdownNavbar from 'markdown-navbar'
+import 'markdown-navbar/dist/navbar.css'
+
 const { Content, Footer, Sider } = Layout
 
 function BasicLayout({ children }) {

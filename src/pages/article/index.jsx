@@ -1,33 +1,25 @@
 import { useRequest } from 'ahooks'
 import { message } from 'antd'
 import axios from 'axios'
-import React from 'react'
+import React, { useState } from 'react'
 import { useParams } from 'react-router-dom'
 import styles from './index.module.scss'
 import classNames from 'classnames'
 import 'react-markdown-editor-lite/lib/index.css'
 import moment from 'moment'
 import 'moment/locale/zh-cn'
+import { BarsOutlined, CloseOutlined } from '@ant-design/icons'
+
+import MarkdownNavbar from 'markdown-navbar'
+import 'markdown-navbar/dist/navbar.css'
+
 moment.locale('zh-cn')
-
-// // markdow语法解析器
-// const mdParser = new MarkdownIt({
-//   highlight: function (str, lang) {
-//     if (lang && window.hljs.getLanguage(lang)) {
-//       try {
-//         return window.hljs.highlight(str, { language: lang }).value;
-//       } catch (__) {}
-//     }
-
-//     return ''; // use external default escaping
-//   },
-// });
 
 const ArticleDetail = () => {
 	const { id } = useParams()
 	const { data = {} } = useRequest(async () => await queryArticleDetail(id))
 
-	console.log(moment.locales())
+	const [hideNav, sethideNav] = useState(false)
 
 	return (
 		<div className={styles.articleWraper}>
@@ -44,6 +36,19 @@ const ArticleDetail = () => {
 				</div>
 			</div>
 
+			<div className={styles.hideBtn} onClick={() => sethideNav(!hideNav)}>
+				{hideNav ? <BarsOutlined /> : <CloseOutlined />}
+			</div>
+			<div
+				className={classNames(
+					styles.articleNav,
+					'navigation',
+					hideNav ? styles.hideNav : styles.showNav
+				)}
+			>
+				<MarkdownNavbar source={data.content_md} ordered={false} headingTopOffset={100} />
+			</div>
+
 			<div
 				className={classNames(styles.articleContent, 'custom-html-style')}
 				dangerouslySetInnerHTML={{ __html: data.content_html }}
@@ -55,7 +60,14 @@ const ArticleDetail = () => {
 const queryArticleDetail = async id => {
 	const { data: res } = await axios(`/front/blog/articles/detail?id=${id}`)
 	if (res.success) {
-		return res.data
+		let article = res.data
+
+		// 避免目录解析不出来第一行的标题
+		if (article?.content_md.startsWith('#')) {
+			article.content_md = '\n' + article.content_md
+		}
+
+		return article
 	} else {
 		throw new Error(res.message)
 	}

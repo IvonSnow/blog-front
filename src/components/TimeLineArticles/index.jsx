@@ -3,7 +3,7 @@ import React from 'react'
 import { Timeline } from 'antd'
 import moment from 'moment'
 import { isArray } from 'lodash'
-import { RiseOutlined } from '@ant-design/icons'
+import { LoadingOutlined, RiseOutlined } from '@ant-design/icons'
 
 const TimeineItem = Timeline.Item
 
@@ -13,7 +13,7 @@ export default function TimeLineArticles({ data }) {
 			{
 				<Timeline mode={'left'}>
 					<TimeineItem className={styles.lineSumaryContent} dot={<RiseOutlined />}>
-						{`已经发布了${data ? data.length : 0}篇博客，继续保持 :)`}
+						{`已经发布了${data ? data.length : <LoadingOutlined />}篇博客，继续保持 :)`}
 					</TimeineItem>
 					{isArray(data) &&
 						data.map(item => {

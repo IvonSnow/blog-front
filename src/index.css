@@ -11,3 +11,23 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.navigation .markdown-navigation .title-anchor {
+  margin: 6px 0;
+}
+
+.navigation .markdown-navigation .title-level1 {
+  font-size: 1.1em;
+}
+
+.navigation .markdown-navigation .title-level2 {
+  font-size: 1em;
+}
+
+.navigation .markdown-navigation .title-level3 {
+  font-size: 0.9em;
+}
+
+.navigation .markdown-navigation .title-level4 {
+  font-size: 0.8em;
+}
