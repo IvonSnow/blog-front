@@ -24,6 +24,14 @@
 				box-shadow: 0 7px 5px rgba(0, 0, 0, 0.12);
 			}
 		}
+
+		.selected {
+			box-shadow: 2px 6px 5px;
+
+			&:hover {
+				box-shadow: 2px 6px 5px;
+			}
+		}
 	}
 
 	.labelReset {

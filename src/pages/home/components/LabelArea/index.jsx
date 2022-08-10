@@ -7,8 +7,9 @@ import { isArray } from 'lodash'
 import styles from './index.module.scss'
 import '@/mock/blog/labels'
 import { queryLabels } from '@/pages/blogSearch/index'
+import classNames from 'classnames'
 
-export default function LabelArea({ select }) {
+export default function LabelArea({ select, curLabel }) {
 	const { data: labels, error, loading } = useRequest(queryLabels)
 	return (
 		<div className={styles.labelWrap}>
@@ -30,7 +31,9 @@ export default function LabelArea({ select }) {
 						>
 							<Tag
 								key={index}
-								className={styles.labelTag}
+								className={`${styles.labelTag} ${
+									curLabel === item.name ? styles.selected : ''
+								}`}
 								onClick={() => select(item.name)}
 							>
 								{item.cn_name || item.name}

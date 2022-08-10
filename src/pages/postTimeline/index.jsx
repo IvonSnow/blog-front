@@ -5,6 +5,7 @@ import { useRequest } from 'ahooks'
 import ReactECharts from 'echarts-for-react'
 import moment from 'moment'
 import styles from './index.module.scss'
+import useInfiniteScroll from '@/hooks/useInfiniteScroll'
 
 async function getHeatMapData(year) {
 	const { data: res } = await axios.get('/front/blog/articles/heat?year=' + year)
@@ -13,12 +14,38 @@ async function getHeatMapData(year) {
 	if (res.success) {
 		data = res.data.map(item => [item.created_at, item.sum])
 	}
-	console.log(data)
 	return data
 }
 
+// 请求文章列表数据
+const queryArticlesList = async ({ pageSize, currentPage }) => {
+	const { data: res } = await axios
+		.get('/front/blog/articles/list', {
+			params: {
+				pageSize,
+				currentPage,
+			},
+		})
+		.catch(err => {
+			console.error(err)
+		})
+
+	if (res.success && res.data) {
+		return res.data
+	}
+
+	return {}
+}
+
 export default function PostTimeline() {
-	const { data: articles } = useRequest(queryArticlesList)
+	const {
+		data: articles,
+		isNoMore,
+		loading,
+	} = useInfiniteScroll(
+		async ({ pageSize, currentPage }) => await queryArticlesList({ pageSize, currentPage })
+	)
+
 	const [year, setYear] = useState('2022')
 	const { data: heatMapData } = useRequest(async () => await getHeatMapData(year))
 
@@ -70,19 +97,4 @@ export default function PostTimeline() {
 			<TimeLineArticles data={articles} />
 		</div>
 	)
-}
-
-// 请求文章列表数据
-// 请求文章列表数据
-const queryArticlesList = async () => {
-	const { data: res } = await axios.get('/front/blog/articles/list').catch(err => {
-		console.error(err)
-	})
-
-	let articles = []
-	if (res.success) {
-		articles = res.data
-	}
-
-	return articles
 }

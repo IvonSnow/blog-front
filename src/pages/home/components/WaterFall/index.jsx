@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Card, Row, Col } from 'antd'
 import { useMount } from 'ahooks'
 import styles from './index.module.scss'
@@ -15,7 +15,7 @@ export default function WaterFall({ data }) {
 
 	const navigate = useNavigate()
 
-	useMount(() => {
+	useEffect(() => {
 		let c1 = [],
 			c2 = [],
 			c3 = []
@@ -41,7 +41,7 @@ export default function WaterFall({ data }) {
 		setCol1(c1)
 		setCol2(c2)
 		setCol3(c3)
-	})
+	}, [data])
 
 	const toDetail = id => {
 		console.log('to')
