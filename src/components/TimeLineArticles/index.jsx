@@ -2,7 +2,7 @@ import styles from './index.module.scss'
 import React from 'react'
 import { Timeline } from 'antd'
 import moment from 'moment'
-import { isArray } from 'lodash'
+import { isArray } from 'lodash-es'
 import { LoadingOutlined, RiseOutlined } from '@ant-design/icons'
 
 const TimeineItem = Timeline.Item

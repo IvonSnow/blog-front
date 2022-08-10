@@ -1,9 +1,10 @@
+import { lazy } from 'react'
 import { Link } from 'react-router-dom'
 import { HomeOutlined, InsertRowLeftOutlined, SearchOutlined } from '@ant-design/icons'
 
-import Home from '@/pages/home/index.jsx'
-import PostTimeline from '@/pages/postTimeline'
-import BlogSearch from '@/pages/blogSearch'
+const Home = lazy(() => import('@/pages/home'))
+const PostTimeline = lazy(() => import('@/pages/postTimeline'))
+const BlogSearch = lazy(() => import('@/pages/blogSearch'))
 
 export const NavItems = [
 	{

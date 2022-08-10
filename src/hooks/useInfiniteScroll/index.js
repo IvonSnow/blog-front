@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
-import _ from 'lodash'
+import { debounce } from 'lodash-es'
 import { useGetState, useUpdateEffect } from 'ahooks'
 
 // service的返回数据必须包含
@@ -80,7 +80,7 @@ function useInfiniteScroll(service, options = {}) {
 
 	// 绑定窗口滚动事件，检测是否活动到底部
 	useEffect(() => {
-		let handler = _.debounce(scrollHandler, 300)
+		let handler = debounce(scrollHandler, 300)
 		window.addEventListener('scroll', handler)
 
 		return () => {

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Card, Row, Col } from 'antd'
 import { useMount } from 'ahooks'
 import styles from './index.module.scss'
-import { isArray } from 'lodash'
+import { isArray } from 'lodash-es'
 import { LikeOutlined, MessageOutlined } from '@ant-design/icons'
 import { useNavigate } from 'react-router-dom'
 

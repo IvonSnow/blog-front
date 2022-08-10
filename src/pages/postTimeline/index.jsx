@@ -2,10 +2,29 @@ import React, { useState } from 'react'
 import TimeLineArticles from '@/components/TimeLineArticles'
 import axios from 'axios'
 import { useRequest } from 'ahooks'
-import ReactECharts from 'echarts-for-react'
-import moment from 'moment'
 import styles from './index.module.scss'
 import useInfiniteScroll from '@/hooks/useInfiniteScroll'
+
+// echart按需导入
+import ReactEChartsCore from 'echarts-for-react/lib/core'
+import * as echarts from 'echarts/core'
+import {
+	TitleComponent,
+	CalendarComponent,
+	TooltipComponent,
+	VisualMapComponent,
+} from 'echarts/components'
+import { HeatmapChart } from 'echarts/charts'
+import { CanvasRenderer } from 'echarts/renderers'
+
+echarts.use([
+	TitleComponent,
+	CalendarComponent,
+	TooltipComponent,
+	VisualMapComponent,
+	HeatmapChart,
+	CanvasRenderer,
+])
 
 async function getHeatMapData(year) {
 	const { data: res } = await axios.get('/front/blog/articles/heat?year=' + year)
@@ -90,7 +109,7 @@ export default function PostTimeline() {
 		<div>
 			{/* 热力图 */}
 			<div className={styles.heatMapWrap}>
-				<ReactECharts option={heatOptions} />
+				<ReactEChartsCore echarts={echarts} option={heatOptions} />
 			</div>
 
 			{/* 时间线 */}

@@ -1,13 +1,10 @@
 import { useRequest } from 'ahooks'
-import axios from 'axios'
 import React from 'react'
 import { Tag, Row, Badge, Tooltip } from 'antd'
 import { ReloadOutlined, TagsOutlined } from '@ant-design/icons'
-import { isArray } from 'lodash'
+import { isArray } from 'lodash-es'
 import styles from './index.module.scss'
-import '@/mock/blog/labels'
 import { queryLabels } from '@/pages/blogSearch/index'
-import classNames from 'classnames'
 
 export default function LabelArea({ select, curLabel }) {
 	const { data: labels, error, loading } = useRequest(queryLabels)
