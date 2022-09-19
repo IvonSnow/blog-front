@@ -15,6 +15,7 @@ import Menu from '@/components/Menu'
 import { NavItems } from '@/router/router'
 import { useRequest } from 'ahooks'
 import axios from 'axios'
+import { ReactSVG } from 'react-svg'
 
 import MarkdownNavbar from 'markdown-navbar'
 import 'markdown-navbar/dist/navbar.css'
@@ -108,6 +109,17 @@ function BasicLayout({ children }) {
 					{/* 导航 */}
 					<Row className={classnames(styles.NavWrap)} align={'middle'} justify={'center'}>
 						<Menu selectedKey={currNav} items={NavItems}></Menu>
+					</Row>
+
+					{/* 返回个人网站首页 */}
+					<Row
+						className={classnames(styles.siteHome)}
+						align={'middle'}
+						justify={'center'}
+					>
+						<a href='http://xueyunfeng.top' title='风云雪'>
+							<ReactSVG src='fengyunxue.svg' />
+						</a>
 					</Row>
 				</Space>
 			</Sider>
